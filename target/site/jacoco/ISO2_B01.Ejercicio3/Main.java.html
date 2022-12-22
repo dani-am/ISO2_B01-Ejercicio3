@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISO2-B01.Ejercicio3</a> &gt; <a href="index.source.html" class="el_package">ISO2_B01.Ejercicio3</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package ISO2_B01.Ejercicio3;
+
+<span class="nc" id="L3">public class Main {</span>
+
+	public static void main(String[] args){
+<span class="nc" id="L6">		Cliente cl = new Cliente();</span>
+<span class="nc" id="L7">		cl.setNombre(&quot;Pepito&quot;);</span>
+<span class="nc" id="L8">		cl.setApellidos(&quot;Grillo&quot;);</span>
+		try {
+<span class="nc" id="L10">		cl.setEdad(15);</span>
+<span class="nc" id="L11">		cl.setEstudia(true);</span>
+<span class="nc" id="L12">		cl.setIndependizado(false);</span>
+		
+<span class="nc" id="L14">		System.out.println(tipoCuenta(cl));</span>
+<span class="nc" id="L15">		} catch (ExceptionEdad e) {</span>
+<span class="nc" id="L16">		System.out.println(&quot;La edad debe ser un número positivo.&quot;);</span>
+<span class="nc" id="L17">		}</span>
+<span class="nc" id="L18">	}</span>
+
+	public static String tipoCuenta(Cliente cl) {
+		
+		//caso 1: MENOR de edad, ESTUDIANDO y NO INDEPENDIZADO
+<span class="fc bfc" id="L23" title="All 6 branches covered.">		if(cl.getEdad()&lt;18 &amp;&amp; cl.isEstudia() &amp;&amp; !cl.isIndependizado())</span>
+<span class="fc" id="L24">			return &quot;Cuenta confort&quot;;</span>
+		
+		//caso 2: MENOR DE 25, ESTUDIANDO e INDEPENDIZADO
+<span class="fc bfc" id="L27" title="All 6 branches covered.">		if(cl.getEdad()&lt;25 &amp;&amp; cl.isEstudia() &amp;&amp; cl.isIndependizado())</span>
+<span class="fc" id="L28">			return &quot;Cuenta vamos que tú puedes&quot;;</span>
+		
+		//Caso 3; MAYOR de edad, TRABAJANDO, NO INDEPENDIZADO
+<span class="fc bfc" id="L31" title="All 4 branches covered.">		if(cl.getEdad()&gt;18 &amp;&amp; !cl.isEstudia())</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">			if(!cl.isIndependizado())</span>
+<span class="fc" id="L33">				return &quot;Cuenta ahorra ahora que puedes&quot;;</span>
+			else
+<span class="fc" id="L35">				return &quot;Cuenta saltando del nido&quot;;</span>
+		
+		//Caso 4: MAYOR de 25, TRABAJANDO, NO INDEPENDIZADO
+<span class="pc bpc" id="L38" title="3 of 6 branches missed.">		if(cl.getEdad()&gt;25 &amp;&amp; !cl.isEstudia() &amp;&amp; !cl.isIndependizado())</span>
+<span class="nc" id="L39">			return &quot;Cuenta independízate que va siendo hora&quot;;</span>
+		
+		//Caso 5: MAYOR de 25, TRABAJANDO, INDEPENDIZADO
+<span class="pc bpc" id="L42" title="3 of 6 branches missed.">		if(cl.getEdad()&gt;25 &amp;&amp; !cl.isEstudia() &amp;&amp; cl.isIndependizado())</span>
+<span class="nc" id="L43">			return &quot;Cuenta bienvenido a la vida adulta&quot;;</span>
+		
+<span class="fc" id="L45">		return &quot;No es posible asignar una cuenta al cliente&quot;+cl.getNombre()+&quot; &quot;+cl.getApellidos();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
